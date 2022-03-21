@@ -1,0 +1,24 @@
+{
+  "start": {
+    "x": 10,
+    "y": 22
+  },
+  "commmands": [
+    {
+      "direction": "east",
+      "steps": 10
+    },
+    {
+      "direction": "west",
+      "steps": 10
+    },
+    {
+      "direction": "north",
+      "steps": 10
+    },
+    {
+      "direction": "south",
+      "steps": 10
+    }
+  ]
+}

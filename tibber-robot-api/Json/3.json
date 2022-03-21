@@ -1,0 +1,16 @@
+{
+  "start": {
+    "x": 0,
+    "y": 0
+  },
+  "commmands": [
+    {
+      "direction": "west",
+      "steps": 10000
+    },
+    {
+      "direction": "north",
+      "steps": 10000
+    }
+  ]
+}
