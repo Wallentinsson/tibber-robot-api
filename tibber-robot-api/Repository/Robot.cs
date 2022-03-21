@@ -68,7 +68,6 @@ namespace tibber_robot_api.Repository
                 {
                     CurrentPosition.Y--;
                     AddPointToListUnique(ref visitedPoints, new Point { X = CurrentPosition.X, Y = CurrentPosition.Y });
-                    Console.WriteLine($"Moving North: {CurrentPosition}");
                     RobotSteps ++;
                 }
                 else
@@ -86,7 +85,6 @@ namespace tibber_robot_api.Repository
                 {
                     CurrentPosition.X++;
                     AddPointToListUnique(ref visitedPoints, new Point { X = CurrentPosition.X, Y = CurrentPosition.Y });
-                    Console.WriteLine($"Moving East: {CurrentPosition}");
                     RobotSteps++;
                 }
                 else
@@ -104,7 +102,6 @@ namespace tibber_robot_api.Repository
                 {
                     CurrentPosition.Y++;
                     AddPointToListUnique(ref visitedPoints, new Point { X = CurrentPosition.X, Y = CurrentPosition.Y });
-                    Console.WriteLine($"Moving South: {CurrentPosition}");
                     RobotSteps++;
                 }
                 else
@@ -122,7 +119,6 @@ namespace tibber_robot_api.Repository
                 {
                     CurrentPosition.X--;
                     AddPointToListUnique(ref visitedPoints, new Point { X = CurrentPosition.X, Y = CurrentPosition.Y });
-                    Console.WriteLine($"Moving West: {CurrentPosition}");
                     RobotSteps++;
                 }
                 else
