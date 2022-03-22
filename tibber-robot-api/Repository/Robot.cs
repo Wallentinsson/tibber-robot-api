@@ -20,7 +20,7 @@ namespace tibber_robot_api.Repository
         /// </summary>
         public int RobotSteps { get; set; } = 0;
   
-        public void CommandRobot(Command command, ref List<Point> uniqueVisitedPoints)
+        public void CommandRobot(Command command, ref HashSet<Point> uniqueVisitedPoints)
         {
             // Command directions could be expanded with more directions, to expand functionality.
             // Same goes for the Move functions. Could be expanded with extra logic.
@@ -46,21 +46,19 @@ namespace tibber_robot_api.Repository
 
         }
 
-        void AddPointToListUnique(ref List<Point> visitedPoints, Point currentPosition)
+        void AddPointToListUnique(ref HashSet<Point> visitedPoints, Point currentPosition)
         {
-            // This could be optimized by not using a list. Keeping it simple.
-            if (!visitedPoints.Any(x => x.X == currentPosition.X && x.Y == currentPosition.Y))
-            {
-                visitedPoints.Add(currentPosition);
-            }
+            // Optimized with HashSet. Could be possible be better with line intersection comparison,
+            // but that would mean rather heavy comparison calculations in big command sets.
+            visitedPoints.Add(currentPosition);
         }
 
         /*
             Possible to add the outer limits of the office as configuration, skipped to keep it simple
-         */ 
+         */
         #region ListOperations
 
-        void MoveNorth(int steps, ref List<Point> visitedPoints)
+        void MoveNorth(int steps, ref HashSet<Point> visitedPoints)
         {
             for(int i = 0; i < steps; i++)
             {
@@ -77,7 +75,7 @@ namespace tibber_robot_api.Repository
             }
         }
 
-        void MoveEast(int steps, ref List<Point> visitedPoints)
+        void MoveEast(int steps, ref HashSet<Point> visitedPoints)
         {
             for (int i = 0; i < steps; i++)
             {
@@ -94,7 +92,7 @@ namespace tibber_robot_api.Repository
             }
         }
 
-        void MoveSouth(int steps, ref List<Point> visitedPoints)
+        void MoveSouth(int steps, ref HashSet<Point> visitedPoints)
         {
             for (int i = 0; i < steps; i++)
             {
@@ -111,7 +109,7 @@ namespace tibber_robot_api.Repository
             }
         }
 
-        void MoveWest(int steps, ref List<Point> visitedPoints)
+        void MoveWest(int steps, ref HashSet<Point> visitedPoints)
         {
             for (int i = 0; i < steps; i++)
             {

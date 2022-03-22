@@ -12,6 +12,6 @@ namespace tibber_robot_api.Repository
         /// <summary>
         /// Sending the robot on its cleaning mission
         /// </summary>
-        public void CommandRobot(Command command, ref List<Point> uniqueVisitedPoints);
+        public void CommandRobot(Command command, ref HashSet<Point> uniqueVisitedPoints);
     }
 }

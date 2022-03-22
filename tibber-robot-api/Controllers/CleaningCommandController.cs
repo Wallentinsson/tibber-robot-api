@@ -42,7 +42,7 @@ namespace tibber_robot_api.Controllers
             try
             {
                 CleaningCommandResponse response = ExecuteRobotCommands(cleaningCommandRequest.Start, cleaningCommandRequest.Commmands);
-                //DatabaseClient dbClient = new DatabaseClient(_context);
+    
                 StorageRepository storageRepository = new StorageRepository();
                 if (!storageRepository.StoreExecutionToDb(_context, ref response))
                 {
@@ -70,7 +70,7 @@ namespace tibber_robot_api.Controllers
         public static CleaningCommandResponse ExecuteRobotCommands(Point startPoint, List<Command> commands)
         {
             CleaningCommandResponse response = new CleaningCommandResponse();
-            
+
             /*  
                 Keeping it simple with List<>
                 To increase performance for example a HashSet might be more proficient 
@@ -80,7 +80,8 @@ namespace tibber_robot_api.Controllers
                 result in the unique visited points.
              
              */
-            List<Point> uniqueOfficePoints = new List<Point>();
+            
+            HashSet<Point> uniqueOfficePoints = new HashSet<Point>(new PointComparer());
             uniqueOfficePoints.Add(startPoint);
 
             //Implementing robot as an actual robot that takes commands, instead of pure calculation. Simulating movements that could be expanded with more logic.
@@ -118,8 +119,10 @@ namespace tibber_robot_api.Controllers
         //        CleaningCommandRequest req;
         //        using (System.IO.StreamReader r = new System.IO.StreamReader(tFile.FullName))
         //        {
-        //            string json = r.ReadToEnd();
+        //            string json = r.ReadToEnd();                    
+                    
         //            req = Newtonsoft.Json.JsonConvert.DeserializeObject<CleaningCommandRequest>(json);
+
         //        }
 
         //        CleaningCommandResponse response = ExecuteRobotCommands(req.Start, req.Commmands);
